@@ -1,10 +1,10 @@
 #include "text_processing.h"
 
 /** \brief
- *  Функция, обрабатывающая ошибки чтения и выделения памяти
- * \param HWND hwnd - дескриптор окна
- * \param TCHAR szClassName[ ] - имя класса окна приложения
- * \param ERROR_STATE err - тип ошибки
+ *  Р¤СѓРЅРєС†РёСЏ, РѕР±СЂР°Р±Р°С‚С‹РІР°СЋС‰Р°СЏ РѕС€РёР±РєРё С‡С‚РµРЅРёСЏ Рё РІС‹РґРµР»РµРЅРёСЏ РїР°РјСЏС‚Рё
+ * \param HWND hwnd - РґРµСЃРєСЂРёРїС‚РѕСЂ РѕРєРЅР°
+ * \param TCHAR szClassName[ ] - РёРјСЏ РєР»Р°СЃСЃР° РѕРєРЅР° РїСЂРёР»РѕР¶РµРЅРёСЏ
+ * \param ERROR_STATE err - С‚РёРї РѕС€РёР±РєРё
  *
  */
 void ProcessErrorState(HWND hwnd, TCHAR szClassName[ ], ERROR_STATE err) {
@@ -27,10 +27,10 @@ void ProcessErrorState(HWND hwnd, TCHAR szClassName[ ], ERROR_STATE err) {
 }
 
 /** \brief
- *  Функция, читающая текст из файла
- * \param TEXT* text - структура текста
- * \param char* fileName - имя файла
- * \param ERROR_STATE* err - возврат ошибки
+ *  Р¤СѓРЅРєС†РёСЏ, С‡РёС‚Р°СЋС‰Р°СЏ С‚РµРєСЃС‚ РёР· С„Р°Р№Р»Р°
+ * \param TEXT* text - СЃС‚СЂСѓРєС‚СѓСЂР° С‚РµРєСЃС‚Р°
+ * \param char* fileName - РёРјСЏ С„Р°Р№Р»Р°
+ * \param ERROR_STATE* err - РІРѕР·РІСЂР°С‚ РѕС€РёР±РєРё
  *
  */
 void ReadText(TEXT* text, char* fileName, ERROR_STATE* err) {
@@ -63,7 +63,7 @@ void ReadText(TEXT* text, char* fileName, ERROR_STATE* err) {
     text->textStr[text->textLength] = '\0';
     fclose(file);
 
-    //сохраняем позиции переводов строки и длину самой длинной строки
+    //СЃРѕС…СЂР°РЅСЏРµРј РїРѕР·РёС†РёРё РїРµСЂРµРІРѕРґРѕРІ СЃС‚СЂРѕРєРё Рё РґР»РёРЅСѓ СЃР°РјРѕР№ РґР»РёРЅРЅРѕР№ СЃС‚СЂРѕРєРё
     strCounter = 0;
     text->maxLineLen = 0;
     text->linesPositions[strCounter] = 0;
@@ -97,8 +97,8 @@ void ReadText(TEXT* text, char* fileName, ERROR_STATE* err) {
 }
 
 /** \brief
- *  Функция, инициализирующая структуру текста
- * \param TEXT* text - структура текста
+ *  Р¤СѓРЅРєС†РёСЏ, РёРЅРёС†РёР°Р»РёР·РёСЂСѓСЋС‰Р°СЏ СЃС‚СЂСѓРєС‚СѓСЂСѓ С‚РµРєСЃС‚Р°
+ * \param TEXT* text - СЃС‚СЂСѓРєС‚СѓСЂР° С‚РµРєСЃС‚Р°
  *
  */
 void InitializeText(TEXT* text) {

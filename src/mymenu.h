@@ -12,4 +12,3 @@
 
 #define IDM_HELP 5
 #define IDM_ABOUT 6
-

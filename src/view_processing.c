@@ -1,41 +1,41 @@
 #include "view_processing.h"
 
 /** \brief
- *  Функция, выводящая текст в окно без верстки
- * \param HDC hdc - дескриптор контекста устройства
- * \param TEXT* text - структура текста
- * \param VIEW* view - структура отображения текста
+ *  Р¤СѓРЅРєС†РёСЏ, РІС‹РІРѕРґСЏС‰Р°СЏ С‚РµРєСЃС‚ РІ РѕРєРЅРѕ Р±РµР· РІРµСЂСЃС‚РєРё
+ * \param HDC hdc - РґРµСЃРєСЂРёРїС‚РѕСЂ РєРѕРЅС‚РµРєСЃС‚Р° СѓСЃС‚СЂРѕР№СЃС‚РІР°
+ * \param TEXT* text - СЃС‚СЂСѓРєС‚СѓСЂР° С‚РµРєСЃС‚Р°
+ * \param VIEW* view - СЃС‚СЂСѓРєС‚СѓСЂР° РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ С‚РµРєСЃС‚Р°
  *
  */
 void PrintTextUsual(HDC hdc, TEXT* text, VIEW* view) {
     int i, j, count;
     char* curStr = NULL;
     int maxCharsNum = view->winW / view->charW;
-    int linesNum = fmin((int)text->linesNum, (int)view->winH / view->charH); //количество строчек для вывода
+    int linesNum = fmin((int)text->linesNum, (int)view->winH / view->charH); //РєРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚СЂРѕС‡РµРє РґР»СЏ РІС‹РІРѕРґР°
     for (i = 0; i < linesNum; i++) {
         j = i + view->curPosition.curLineNum;
 
         count = fmin((int)text->linesPositions[j + 1] - (int)text->linesPositions[j] - (int)view->curPosition.curCharNum - 2, (int)maxCharsNum);
 
-        curStr = text->textStr + text->linesPositions[j]; //начало текущей строчки
+        curStr = text->textStr + text->linesPositions[j]; //РЅР°С‡Р°Р»Рѕ С‚РµРєСѓС‰РµР№ СЃС‚СЂРѕС‡РєРё
         TextOut(hdc, view->charW * HORZ_OFFSET_MULT, view->charH * i, curStr + view->curPosition.curCharNum, count);
     }
 }
 
 /** \brief
- *  Функция, выводящая текст в окно с версткой
- * \param HDC hdc - дескриптор контекста устройства
- * \param TEXT* text - структура текста
- * \param VIEW* view - структура отображения текста
+ *  Р¤СѓРЅРєС†РёСЏ, РІС‹РІРѕРґСЏС‰Р°СЏ С‚РµРєСЃС‚ РІ РѕРєРЅРѕ СЃ РІРµСЂСЃС‚РєРѕР№
+ * \param HDC hdc - РґРµСЃРєСЂРёРїС‚РѕСЂ РєРѕРЅС‚РµРєСЃС‚Р° СѓСЃС‚СЂРѕР№СЃС‚РІР°
+ * \param TEXT* text - СЃС‚СЂСѓРєС‚СѓСЂР° С‚РµРєСЃС‚Р°
+ * \param VIEW* view - СЃС‚СЂСѓРєС‚СѓСЂР° РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ С‚РµРєСЃС‚Р°
  *
  */
 void PrintTextWithLayout(HDC hdc, TEXT* text, VIEW* view) {
     int i, j, count;
     char* curStr = NULL;
-    int linesNum = fmin((int)view->curTextSize.totalLinesNum, (int)view->winH / view->charH); //количество строчек для вывода
+    int linesNum = fmin((int)view->curTextSize.totalLinesNum, (int)view->winH / view->charH); //РєРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚СЂРѕС‡РµРє РґР»СЏ РІС‹РІРѕРґР°
     for (i = 0; i < linesNum; i++) {
         j = i + view->curPosition.curLineNum;
-        curStr = text->textStr + view->strPositionsWithLayout[j * 2];  //начало текущей строчки
+        curStr = text->textStr + view->strPositionsWithLayout[j * 2];  //РЅР°С‡Р°Р»Рѕ С‚РµРєСѓС‰РµР№ СЃС‚СЂРѕС‡РєРё
 
         count = view->strPositionsWithLayout[j * 2 + 1] - view->strPositionsWithLayout[j * 2] - view->curPosition.curCharNum;
 
@@ -44,10 +44,10 @@ void PrintTextWithLayout(HDC hdc, TEXT* text, VIEW* view) {
 }
 
 /** \brief
- *  Функция, выводящая текст в окно согласно текущему режиму
- * \param HDC hdc - дескриптор контекста устройства
- * \param TEXT* text - структура текста
- * \param VIEW* view - структура отображения текста
+ *  Р¤СѓРЅРєС†РёСЏ, РІС‹РІРѕРґСЏС‰Р°СЏ С‚РµРєСЃС‚ РІ РѕРєРЅРѕ СЃРѕРіР»Р°СЃРЅРѕ С‚РµРєСѓС‰РµРјСѓ СЂРµР¶РёРјСѓ
+ * \param HDC hdc - РґРµСЃРєСЂРёРїС‚РѕСЂ РєРѕРЅС‚РµРєСЃС‚Р° СѓСЃС‚СЂРѕР№СЃС‚РІР°
+ * \param TEXT* text - СЃС‚СЂСѓРєС‚СѓСЂР° С‚РµРєСЃС‚Р°
+ * \param VIEW* view - СЃС‚СЂСѓРєС‚СѓСЂР° РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ С‚РµРєСЃС‚Р°
  *
  */
 void PrintText(HDC hdc, TEXT* text, VIEW* view) {
@@ -64,22 +64,22 @@ void PrintText(HDC hdc, TEXT* text, VIEW* view) {
 }
 
 /** \brief
- *  Функция, получающая размер рабочей области(с учетом отступа)
- * \param HWND hwnd - дескриптор окна
- * \param VIEW* view - структура отображения текста
+ *  Р¤СѓРЅРєС†РёСЏ, РїРѕР»СѓС‡Р°СЋС‰Р°СЏ СЂР°Р·РјРµСЂ СЂР°Р±РѕС‡РµР№ РѕР±Р»Р°СЃС‚Рё(СЃ СѓС‡РµС‚РѕРј РѕС‚СЃС‚СѓРїР°)
+ * \param HWND hwnd - РґРµСЃРєСЂРёРїС‚РѕСЂ РѕРєРЅР°
+ * \param VIEW* view - СЃС‚СЂСѓРєС‚СѓСЂР° РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ С‚РµРєСЃС‚Р°
  *
  */
 void UpdateVeiwWindowSize(HWND hwnd, VIEW* view) {
     RECT rect;
     GetClientRect(hwnd, &rect);
     view->winH = rect.bottom;
-    view->winW = rect.right - view->charW * HORZ_OFFSET_MULT; //учитываем отступ справа
+    view->winW = rect.right - view->charW * HORZ_OFFSET_MULT; //СѓС‡РёС‚С‹РІР°РµРј РѕС‚СЃС‚СѓРї СЃРїСЂР°РІР°
 }
 
 /** \brief
- *  Функция, инициализирующая структуру отображения
- * \param HWND hwnd - дескриптор окна
- * \param VIEW* view - структура отображения текста
+ *  Р¤СѓРЅРєС†РёСЏ, РёРЅРёС†РёР°Р»РёР·РёСЂСѓСЋС‰Р°СЏ СЃС‚СЂСѓРєС‚СѓСЂСѓ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ
+ * \param HWND hwnd - РґРµСЃРєСЂРёРїС‚РѕСЂ РѕРєРЅР°
+ * \param VIEW* view - СЃС‚СЂСѓРєС‚СѓСЂР° РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ С‚РµРєСЃС‚Р°
  */
 void InitializeView(HWND hwnd, VIEW* view) {
     view->mode = USUAL;
@@ -90,8 +90,8 @@ void InitializeView(HWND hwnd, VIEW* view) {
 }
 
 /** \brief
- *  Функция, переводящаяя начало вывода в начало текста
- * \param VIEW* view - структура отображения текста
+ *  Р¤СѓРЅРєС†РёСЏ, РїРµСЂРµРІРѕРґСЏС‰Р°СЏСЏ РЅР°С‡Р°Р»Рѕ РІС‹РІРѕРґР° РІ РЅР°С‡Р°Р»Рѕ С‚РµРєСЃС‚Р°
+ * \param VIEW* view - СЃС‚СЂСѓРєС‚СѓСЂР° РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ С‚РµРєСЃС‚Р°
  *
  */
 void SetZeroTextPosition(VIEW* view) {
@@ -100,10 +100,10 @@ void SetZeroTextPosition(VIEW* view) {
 }
 
 /** \brief
- *  Функция, заполняющая поля структуры представления текста, использующиеся для режима с версткой
- * \param TEXT* text - структура текста
- * \param VIEW* view - структура отображения текста
-  * \param ERROR_STATE* err - тип ошибки
+ *  Р¤СѓРЅРєС†РёСЏ, Р·Р°РїРѕР»РЅСЏСЋС‰Р°СЏ РїРѕР»СЏ СЃС‚СЂСѓРєС‚СѓСЂС‹ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёСЏ С‚РµРєСЃС‚Р°, РёСЃРїРѕР»СЊР·СѓСЋС‰РёРµСЃСЏ РґР»СЏ СЂРµР¶РёРјР° СЃ РІРµСЂСЃС‚РєРѕР№
+ * \param TEXT* text - СЃС‚СЂСѓРєС‚СѓСЂР° С‚РµРєСЃС‚Р°
+ * \param VIEW* view - СЃС‚СЂСѓРєС‚СѓСЂР° РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ С‚РµРєСЃС‚Р°
+  * \param ERROR_STATE* err - С‚РёРї РѕС€РёР±РєРё
  *
  */
 void FillInfoForLayout(TEXT* text, VIEW* view, ERROR_STATE* error) {
@@ -118,7 +118,7 @@ void FillInfoForLayout(TEXT* text, VIEW* view, ERROR_STATE* error) {
 
      for (i = 0; i < text->linesNum; i++) {
         curSubstrNum = 0;
-        if (text->textStr[text->linesPositions[i]] == 0) { //если строчка пустая
+        if (text->textStr[text->linesPositions[i]] == 0) { //РµСЃР»Рё СЃС‚СЂРѕС‡РєР° РїСѓСЃС‚Р°СЏ
             view->strPositionsWithLayout[(numOfLinesWithLayout + curSubstrNum) * 2] = text->linesPositions[i];
             view->strPositionsWithLayout[(numOfLinesWithLayout + curSubstrNum) * 2 + 1] = text->linesPositions[i];
             numOfLinesWithLayout++;
@@ -129,16 +129,16 @@ void FillInfoForLayout(TEXT* text, VIEW* view, ERROR_STATE* error) {
             view->strPositionsWithLayout[(numOfLinesWithLayout + curSubstrNum) * 2] = j;
 
             j += maxSymbolsInLine - 1;
-            if (j >= text->linesPositions[i + 1] - 2) //если достигли конца строки
+            if (j >= text->linesPositions[i + 1] - 2) //РµСЃР»Рё РґРѕСЃС‚РёРіР»Рё РєРѕРЅС†Р° СЃС‚СЂРѕРєРё
                j = text->linesPositions[i + 1] - 1;
-            else if (text->textStr[j + 1] == ' ') //пропускаем пробел в конце строки
+            else if (text->textStr[j + 1] == ' ') //РїСЂРѕРїСѓСЃРєР°РµРј РїСЂРѕР±РµР» РІ РєРѕРЅС†Рµ СЃС‚СЂРѕРєРё
                j++;
             else if (text->textStr[j] != ' ') {
                j--;
                while (text->textStr[j] != ' ' && j > view->strPositionsWithLayout[(numOfLinesWithLayout + curSubstrNum) * 2])
-                  j--; //доходим до конца предыдущего слова
+                  j--; //РґРѕС…РѕРґРёРј РґРѕ РєРѕРЅС†Р° РїСЂРµРґС‹РґСѓС‰РµРіРѕ СЃР»РѕРІР°
                if (j <= view->strPositionsWithLayout[(numOfLinesWithLayout + curSubstrNum) * 2]) {
-                    //если ни одно слово не вмещается в строку, переносим по буквам
+                    //РµСЃР»Рё РЅРё РѕРґРЅРѕ СЃР»РѕРІРѕ РЅРµ РІРјРµС‰Р°РµС‚СЃСЏ РІ СЃС‚СЂРѕРєСѓ, РїРµСЂРµРЅРѕСЃРёРј РїРѕ Р±СѓРєРІР°Рј
                     j = view->strPositionsWithLayout[(numOfLinesWithLayout + curSubstrNum) * 2] + maxSymbolsInLine;
                     view->strPositionsWithLayout[(numOfLinesWithLayout + curSubstrNum) * 2 + 1] = j;
                     curSubstrNum++;
@@ -162,10 +162,10 @@ void FillInfoForLayout(TEXT* text, VIEW* view, ERROR_STATE* error) {
 }
 
 /** \brief
- *  Функция, обновляющая поля структуры представления текста, использующиеся для режима с версткой
- * \param TEXT* text - структура текста
- * \param VIEW* view - структура отображения текста
- * \param ERROR_STATE* err - тип ошибки
+ *  Р¤СѓРЅРєС†РёСЏ, РѕР±РЅРѕРІР»СЏСЋС‰Р°СЏ РїРѕР»СЏ СЃС‚СЂСѓРєС‚СѓСЂС‹ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёСЏ С‚РµРєСЃС‚Р°, РёСЃРїРѕР»СЊР·СѓСЋС‰РёРµСЃСЏ РґР»СЏ СЂРµР¶РёРјР° СЃ РІРµСЂСЃС‚РєРѕР№
+ * \param TEXT* text - СЃС‚СЂСѓРєС‚СѓСЂР° С‚РµРєСЃС‚Р°
+ * \param VIEW* view - СЃС‚СЂСѓРєС‚СѓСЂР° РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ С‚РµРєСЃС‚Р°
+ * \param ERROR_STATE* err - С‚РёРї РѕС€РёР±РєРё
  *
  */
 void UpdateInfoForLayout(TEXT* text, VIEW* view, ERROR_STATE* error) {
@@ -177,9 +177,9 @@ void UpdateInfoForLayout(TEXT* text, VIEW* view, ERROR_STATE* error) {
 }
 
 /** \brief
- *  Функция, подготавливающаю структуру представления текста для режима без верстки
- * \param TEXT* text - структура текста
- * \param VIEW* view - структура отображения текста
+ *  Р¤СѓРЅРєС†РёСЏ, РїРѕРґРіРѕС‚Р°РІР»РёРІР°СЋС‰Р°СЋ СЃС‚СЂСѓРєС‚СѓСЂСѓ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёСЏ С‚РµРєСЃС‚Р° РґР»СЏ СЂРµР¶РёРјР° Р±РµР· РІРµСЂСЃС‚РєРё
+ * \param TEXT* text - СЃС‚СЂСѓРєС‚СѓСЂР° С‚РµРєСЃС‚Р°
+ * \param VIEW* view - СЃС‚СЂСѓРєС‚СѓСЂР° РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ С‚РµРєСЃС‚Р°
  *
  */
 void UpdateViewForUsualMode(VIEW* view, TEXT* text) {
@@ -192,20 +192,20 @@ void UpdateViewForUsualMode(VIEW* view, TEXT* text) {
 }
 
 /** \brief
- *  Функция, определяющая текущую позицию текста при переключении в режим с версткой
- * \param TEXT* text - структура текста
- * \param VIEW* view - структура отображения текста
+ *  Р¤СѓРЅРєС†РёСЏ, РѕРїСЂРµРґРµР»СЏСЋС‰Р°СЏ С‚РµРєСѓС‰СѓСЋ РїРѕР·РёС†РёСЋ С‚РµРєСЃС‚Р° РїСЂРё РїРµСЂРµРєР»СЋС‡РµРЅРёРё РІ СЂРµР¶РёРј СЃ РІРµСЂСЃС‚РєРѕР№
+ * \param TEXT* text - СЃС‚СЂСѓРєС‚СѓСЂР° С‚РµРєСЃС‚Р°
+ * \param VIEW* view - СЃС‚СЂСѓРєС‚СѓСЂР° РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ С‚РµРєСЃС‚Р°
  *
  */
 void FindTextPositionForLayout(TEXT* text, VIEW* view) {
 	unsigned int i = 0;
 	unsigned int curAbsolutePosition = text->linesPositions[view->curPosition.curLineNum] + view->curPosition.curCharNum;
-               //номер текущего первого символа вывода в исходной строке текста
+               //РЅРѕРјРµСЂ С‚РµРєСѓС‰РµРіРѕ РїРµСЂРІРѕРіРѕ СЃРёРјРІРѕР»Р° РІС‹РІРѕРґР° РІ РёСЃС…РѕРґРЅРѕР№ СЃС‚СЂРѕРєРµ С‚РµРєСЃС‚Р°
 	if (curAbsolutePosition >= text->linesPositions[view->curPosition.curLineNum + 1])
         curAbsolutePosition = text->linesPositions[view->curPosition.curLineNum + 1] - 1;
 
     for (i = 0; i < view->curTextSize.totalLinesNum * 2; i += 2) {
-        //ищем в какую строчку попадает символ
+        //РёС‰РµРј РІ РєР°РєСѓСЋ СЃС‚СЂРѕС‡РєСѓ РїРѕРїР°РґР°РµС‚ СЃРёРјРІРѕР»
         if (curAbsolutePosition >= view->strPositionsWithLayout[i] &&
                        curAbsolutePosition < view->strPositionsWithLayout[i + 2]) {
             view->curPosition.curLineNum = i / 2;
@@ -216,20 +216,20 @@ void FindTextPositionForLayout(TEXT* text, VIEW* view) {
 }
 
 /** \brief
- *  Функция, определяющая текущую позицию текста при переключении в режим без верстки
- * \param TEXT* text - структура текста
- * \param VIEW* view - структура отображения текста
+ *  Р¤СѓРЅРєС†РёСЏ, РѕРїСЂРµРґРµР»СЏСЋС‰Р°СЏ С‚РµРєСѓС‰СѓСЋ РїРѕР·РёС†РёСЋ С‚РµРєСЃС‚Р° РїСЂРё РїРµСЂРµРєР»СЋС‡РµРЅРёРё РІ СЂРµР¶РёРј Р±РµР· РІРµСЂСЃС‚РєРё
+ * \param TEXT* text - СЃС‚СЂСѓРєС‚СѓСЂР° С‚РµРєСЃС‚Р°
+ * \param VIEW* view - СЃС‚СЂСѓРєС‚СѓСЂР° РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ С‚РµРєСЃС‚Р°
  *
  */
 void FindTextPositionForUsual(TEXT* text, VIEW* view) {
     unsigned int i = 0;
     unsigned int curAbsolutePosition = view->strPositionsWithLayout[view->curPosition.curLineNum * 2] + view->curPosition.curCharNum;
-               //номер текущего первого символа вывода в исходной строке текста
+               //РЅРѕРјРµСЂ С‚РµРєСѓС‰РµРіРѕ РїРµСЂРІРѕРіРѕ СЃРёРјРІРѕР»Р° РІС‹РІРѕРґР° РІ РёСЃС…РѕРґРЅРѕР№ СЃС‚СЂРѕРєРµ С‚РµРєСЃС‚Р°
     if (curAbsolutePosition >= view->strPositionsWithLayout[view->curPosition.curLineNum * 2 + 1])
          curAbsolutePosition = view->strPositionsWithLayout[view->curPosition.curLineNum * 2  + 1] - 1;
 
     for (i = 0; i < text->linesNum; i++) {
-        //ищем в какую строчку попадает символ
+        //РёС‰РµРј РІ РєР°РєСѓСЋ СЃС‚СЂРѕС‡РєСѓ РїРѕРїР°РґР°РµС‚ СЃРёРјРІРѕР»
         if (curAbsolutePosition >= text->linesPositions[i] &&
                        curAbsolutePosition < text->linesPositions[i + 1]) {
             view->curPosition.curLineNum = i;
@@ -240,8 +240,8 @@ void FindTextPositionForUsual(TEXT* text, VIEW* view) {
 }
 
 /** \brief
- *  Функция, смещающая текст при расширении окна
- * \param VIEW* view - структура отображения текста
+ *  Р¤СѓРЅРєС†РёСЏ, СЃРјРµС‰Р°СЋС‰Р°СЏ С‚РµРєСЃС‚ РїСЂРё СЂР°СЃС€РёСЂРµРЅРёРё РѕРєРЅР°
+ * \param VIEW* view - СЃС‚СЂСѓРєС‚СѓСЂР° РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ С‚РµРєСЃС‚Р°
  *
  */
 void MoveWhileResize(VIEW* view) {
@@ -260,28 +260,28 @@ void MoveWhileResize(VIEW* view) {
 }
 
 /** \brief
- *  Функция, определяющая текущую позицию текста и положение каретки при изменении размера окна в режиме с версткой
- * \param TEXT* text - структура текста
- * \param VIEW* view - структура отображения текста
- * \param CARET* caret - структура каретки
- * \param ERROR_STATE err - тип ошибки
+ *  Р¤СѓРЅРєС†РёСЏ, РѕРїСЂРµРґРµР»СЏСЋС‰Р°СЏ С‚РµРєСѓС‰СѓСЋ РїРѕР·РёС†РёСЋ С‚РµРєСЃС‚Р° Рё РїРѕР»РѕР¶РµРЅРёРµ РєР°СЂРµС‚РєРё РїСЂРё РёР·РјРµРЅРµРЅРёРё СЂР°Р·РјРµСЂР° РѕРєРЅР° РІ СЂРµР¶РёРјРµ СЃ РІРµСЂСЃС‚РєРѕР№
+ * \param TEXT* text - СЃС‚СЂСѓРєС‚СѓСЂР° С‚РµРєСЃС‚Р°
+ * \param VIEW* view - СЃС‚СЂСѓРєС‚СѓСЂР° РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ С‚РµРєСЃС‚Р°
+ * \param CARET* caret - СЃС‚СЂСѓРєС‚СѓСЂР° РєР°СЂРµС‚РєРё
+ * \param ERROR_STATE err - С‚РёРї РѕС€РёР±РєРё
  *
  */
 void UpdateInfoForLayoutAfterResize(TEXT* text, VIEW* view, CARET* caret, ERROR_STATE* error) {
     unsigned int i = 0;
     unsigned int curAbsolutePosition, curAbsoluteCaretPos;
 
-    //запоминаем положение начала вывода текста
+    //Р·Р°РїРѕРјРёРЅР°РµРј РїРѕР»РѕР¶РµРЅРёРµ РЅР°С‡Р°Р»Р° РІС‹РІРѕРґР° С‚РµРєСЃС‚Р°
     curAbsolutePosition = view->strPositionsWithLayout[view->curPosition.curLineNum * 2] + view->curPosition.curCharNum;
     if (curAbsolutePosition >= view->strPositionsWithLayout[view->curPosition.curLineNum * 2 + 1])
          curAbsolutePosition = view->strPositionsWithLayout[view->curPosition.curLineNum * 2  + 1] - 1;
 
-    //запоминаем положение каретки
+    //Р·Р°РїРѕРјРёРЅР°РµРј РїРѕР»РѕР¶РµРЅРёРµ РєР°СЂРµС‚РєРё
     curAbsoluteCaretPos = view->strPositionsWithLayout[caret->absoluteVerticalPos * 2] + caret->absoluteHorizontalPos;
 
     UpdateInfoForLayout(text, view, error);
 
-    //ищем в какую строчку попадает символ в новом масштабе
+    //РёС‰РµРј РІ РєР°РєСѓСЋ СЃС‚СЂРѕС‡РєСѓ РїРѕРїР°РґР°РµС‚ СЃРёРјРІРѕР» РІ РЅРѕРІРѕРј РјР°СЃС€С‚Р°Р±Рµ
     for (i = 0; i < view->curTextSize.totalLinesNum * 2; i += 2) {
         if (curAbsolutePosition >= view->strPositionsWithLayout[i] &&
                        curAbsolutePosition < view->strPositionsWithLayout[i + 2]) {
@@ -291,7 +291,7 @@ void UpdateInfoForLayoutAfterResize(TEXT* text, VIEW* view, CARET* caret, ERROR_
     }
     view->curPosition.curCharNum  = curAbsolutePosition - view->strPositionsWithLayout[i];
 
-    //ищем в какую строчку попадает каретка в новом масштабе
+    //РёС‰РµРј РІ РєР°РєСѓСЋ СЃС‚СЂРѕС‡РєСѓ РїРѕРїР°РґР°РµС‚ РєР°СЂРµС‚РєР° РІ РЅРѕРІРѕРј РјР°СЃС€С‚Р°Р±Рµ
     for (i = 0; i < view->curTextSize.totalLinesNum * 2; i += 2) {
         if (curAbsoluteCaretPos >= view->strPositionsWithLayout[(int)fmax(i - 1, 0)] &&
                        curAbsoluteCaretPos <= view->strPositionsWithLayout[i + 1]) {
@@ -305,9 +305,9 @@ void UpdateInfoForLayoutAfterResize(TEXT* text, VIEW* view, CARET* caret, ERROR_
 }
 
 /** \brief
- *  Функция, освобождающая память перед чтением нового файла
- * \param TEXT* text - структура текста
- * \param VIEW* view - структура отображения текста
+ *  Р¤СѓРЅРєС†РёСЏ, РѕСЃРІРѕР±РѕР¶РґР°СЋС‰Р°СЏ РїР°РјСЏС‚СЊ РїРµСЂРµРґ С‡С‚РµРЅРёРµРј РЅРѕРІРѕРіРѕ С„Р°Р№Р»Р°
+ * \param TEXT* text - СЃС‚СЂСѓРєС‚СѓСЂР° С‚РµРєСЃС‚Р°
+ * \param VIEW* view - СЃС‚СЂСѓРєС‚СѓСЂР° РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ С‚РµРєСЃС‚Р°
  *
  */
 void FreeAllMemory(VIEW* view, TEXT* text) {

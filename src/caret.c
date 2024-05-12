@@ -1,8 +1,8 @@
 #include "caret.h"
 
 /** \brief
- *  Функция, выставляющая каретку в нулевую позицию
- * \param CARET* caret - структура каретки
+ *  Р¤СѓРЅРєС†РёСЏ, РІС‹СЃС‚Р°РІР»СЏСЋС‰Р°СЏ РєР°СЂРµС‚РєСѓ РІ РЅСѓР»РµРІСѓСЋ РїРѕР·РёС†РёСЋ
+ * \param CARET* caret - СЃС‚СЂСѓРєС‚СѓСЂР° РєР°СЂРµС‚РєРё
  *
  */
 void SetZeroCaretPosition(CARET* caret) {
@@ -13,12 +13,12 @@ void SetZeroCaretPosition(CARET* caret) {
 }
 
 /** \brief
- *  Функция, возвращающая каретку на последний символ строки, если при вертикальном перемещении она оказывается за ее пределами
- * \param CARET* caret - структура каретки
- * \param TEXT* text - структура текста
- * \param VIEW* view - структура отображения текста
- * \param SCROLLS* scrolls - структура скроллов
- * \param HWND hwnd - дескриптор окна
+ *  Р¤СѓРЅРєС†РёСЏ, РІРѕР·РІСЂР°С‰Р°СЋС‰Р°СЏ РєР°СЂРµС‚РєСѓ РЅР° РїРѕСЃР»РµРґРЅРёР№ СЃРёРјРІРѕР» СЃС‚СЂРѕРєРё, РµСЃР»Рё РїСЂРё РІРµСЂС‚РёРєР°Р»СЊРЅРѕРј РїРµСЂРµРјРµС‰РµРЅРёРё РѕРЅР° РѕРєР°Р·С‹РІР°РµС‚СЃСЏ Р·Р° РµРµ РїСЂРµРґРµР»Р°РјРё
+ * \param CARET* caret - СЃС‚СЂСѓРєС‚СѓСЂР° РєР°СЂРµС‚РєРё
+ * \param TEXT* text - СЃС‚СЂСѓРєС‚СѓСЂР° С‚РµРєСЃС‚Р°
+ * \param VIEW* view - СЃС‚СЂСѓРєС‚СѓСЂР° РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ С‚РµРєСЃС‚Р°
+ * \param SCROLLS* scrolls - СЃС‚СЂСѓРєС‚СѓСЂР° СЃРєСЂРѕР»Р»РѕРІ
+ * \param HWND hwnd - РґРµСЃРєСЂРёРїС‚РѕСЂ РѕРєРЅР°
  *
  */
 void FixCaretOutOfLineBounds(CARET* caret, TEXT* text, VIEW* view, SCROLLS* scrolls, HWND hwnd) {
@@ -48,9 +48,9 @@ void FixCaretOutOfLineBounds(CARET* caret, TEXT* text, VIEW* view, SCROLLS* scro
 }
 
 /** \brief
- *  Функция, проверяющая, находится ли каретка в пределах окна
- * \param CARET* caret - структура каретки
- * \param VIEW* view - структура отображения текста
+ *  Р¤СѓРЅРєС†РёСЏ, РїСЂРѕРІРµСЂСЏСЋС‰Р°СЏ, РЅР°С…РѕРґРёС‚СЃСЏ Р»Рё РєР°СЂРµС‚РєР° РІ РїСЂРµРґРµР»Р°С… РѕРєРЅР°
+ * \param CARET* caret - СЃС‚СЂСѓРєС‚СѓСЂР° РєР°СЂРµС‚РєРё
+ * \param VIEW* view - СЃС‚СЂСѓРєС‚СѓСЂР° РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ С‚РµРєСЃС‚Р°
  *
  */
 boolean IsCaretOnScreen(CARET* caret, VIEW* view) {
@@ -62,16 +62,16 @@ boolean IsCaretOnScreen(CARET* caret, VIEW* view) {
 }
 
 /** \brief
- *  Функция, перемещающая каретку на одну позицию вверх
- * \param CARET* caret - структура каретки
- * \param TEXT* text - структура текста
- * \param VIEW* view - структура отображения текста
- * \param SCROLLS* scrolls - структура скроллов
- * \param HWND hwnd - дескриптор окна
+ *  Р¤СѓРЅРєС†РёСЏ, РїРµСЂРµРјРµС‰Р°СЋС‰Р°СЏ РєР°СЂРµС‚РєСѓ РЅР° РѕРґРЅСѓ РїРѕР·РёС†РёСЋ РІРІРµСЂС…
+ * \param CARET* caret - СЃС‚СЂСѓРєС‚СѓСЂР° РєР°СЂРµС‚РєРё
+ * \param TEXT* text - СЃС‚СЂСѓРєС‚СѓСЂР° С‚РµРєСЃС‚Р°
+ * \param VIEW* view - СЃС‚СЂСѓРєС‚СѓСЂР° РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ С‚РµРєСЃС‚Р°
+ * \param SCROLLS* scrolls - СЃС‚СЂСѓРєС‚СѓСЂР° СЃРєСЂРѕР»Р»РѕРІ
+ * \param HWND hwnd - РґРµСЃРєСЂРёРїС‚РѕСЂ РѕРєРЅР°
  *
  */
 void CaretUp(CARET* caret, TEXT* text, VIEW* view, SCROLLS* scrolls, HWND hwnd) {
-    //если каретка за пределами видимости, возвращаем ее в видимую область снизу
+    //РµСЃР»Рё РєР°СЂРµС‚РєР° Р·Р° РїСЂРµРґРµР»Р°РјРё РІРёРґРёРјРѕСЃС‚Рё, РІРѕР·РІСЂР°С‰Р°РµРј РµРµ РІ РІРёРґРёРјСѓСЋ РѕР±Р»Р°СЃС‚СЊ СЃРЅРёР·Сѓ
     if (!IsCaretOnScreen(caret, view)) {
         caret->verticalPos = fmin((int)view->winH / (int)view->charH - 1, (int)view->curTextSize.totalLinesNum - 1);
         caret->absoluteVerticalPos = view->curPosition.curLineNum + caret->verticalPos;
@@ -99,16 +99,16 @@ void CaretUp(CARET* caret, TEXT* text, VIEW* view, SCROLLS* scrolls, HWND hwnd) 
 }
 
 /** \brief
- *  Функция, перемещающая каретку на одну позицию вниз
- * \param CARET* caret - структура каретки
- * \param TEXT* text - структура текста
- * \param VIEW* view - структура отображения текста
- * \param SCROLLS* scrolls - структура скроллов
- * \param HWND hwnd - дескриптор окна
+ *  Р¤СѓРЅРєС†РёСЏ, РїРµСЂРµРјРµС‰Р°СЋС‰Р°СЏ РєР°СЂРµС‚РєСѓ РЅР° РѕРґРЅСѓ РїРѕР·РёС†РёСЋ РІРЅРёР·
+ * \param CARET* caret - СЃС‚СЂСѓРєС‚СѓСЂР° РєР°СЂРµС‚РєРё
+ * \param TEXT* text - СЃС‚СЂСѓРєС‚СѓСЂР° С‚РµРєСЃС‚Р°
+ * \param VIEW* view - СЃС‚СЂСѓРєС‚СѓСЂР° РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ С‚РµРєСЃС‚Р°
+ * \param SCROLLS* scrolls - СЃС‚СЂСѓРєС‚СѓСЂР° СЃРєСЂРѕР»Р»РѕРІ
+ * \param HWND hwnd - РґРµСЃРєСЂРёРїС‚РѕСЂ РѕРєРЅР°
  *
  */
 void CaretDown(CARET* caret, TEXT* text, VIEW* view, SCROLLS* scrolls, HWND hwnd) {
-    //если каретка за пределами видимости, возвращаем ее в видимую область сверху
+    //РµСЃР»Рё РєР°СЂРµС‚РєР° Р·Р° РїСЂРµРґРµР»Р°РјРё РІРёРґРёРјРѕСЃС‚Рё, РІРѕР·РІСЂР°С‰Р°РµРј РµРµ РІ РІРёРґРёРјСѓСЋ РѕР±Р»Р°СЃС‚СЊ СЃРІРµСЂС…Сѓ
     if (!IsCaretOnScreen(caret, view)) {
         caret->verticalPos = 0;
         caret->absoluteVerticalPos = view->curPosition.curLineNum;
@@ -132,19 +132,19 @@ void CaretDown(CARET* caret, TEXT* text, VIEW* view, SCROLLS* scrolls, HWND hwnd
 }
 
 /** \brief
- *  Функция, перемещающая вывод текста к положению каретки
- *  (используется при перемещении каретки вправо/влево, если каретка находится за пределами текста)
- * \param CARET* caret - структура каретки
- * \param VIEW* view - структура отображения текста
- * \param SCROLLS* scrolls - структура скроллов
- * \param HWND hwnd - дескриптор окна
+ *  Р¤СѓРЅРєС†РёСЏ, РїРµСЂРµРјРµС‰Р°СЋС‰Р°СЏ РІС‹РІРѕРґ С‚РµРєСЃС‚Р° Рє РїРѕР»РѕР¶РµРЅРёСЋ РєР°СЂРµС‚РєРё
+ *  (РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РїСЂРё РїРµСЂРµРјРµС‰РµРЅРёРё РєР°СЂРµС‚РєРё РІРїСЂР°РІРѕ/РІР»РµРІРѕ, РµСЃР»Рё РєР°СЂРµС‚РєР° РЅР°С…РѕРґРёС‚СЃСЏ Р·Р° РїСЂРµРґРµР»Р°РјРё С‚РµРєСЃС‚Р°)
+ * \param CARET* caret - СЃС‚СЂСѓРєС‚СѓСЂР° РєР°СЂРµС‚РєРё
+ * \param VIEW* view - СЃС‚СЂСѓРєС‚СѓСЂР° РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ С‚РµРєСЃС‚Р°
+ * \param SCROLLS* scrolls - СЃС‚СЂСѓРєС‚СѓСЂР° СЃРєСЂРѕР»Р»РѕРІ
+ * \param HWND hwnd - РґРµСЃРєСЂРёРїС‚РѕСЂ РѕРєРЅР°
  *
  */
 void ReturnTextToOldCaretPosition(CARET* caret, VIEW* view, SCROLLS* scrolls, HWND hwnd) {
     if (IsCaretOnScreen(caret, view))
         return;
 
-    //устанавливаем строчку с кареткой второй сверху или как позволяет положение каретки в тексте
+    //СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј СЃС‚СЂРѕС‡РєСѓ СЃ РєР°СЂРµС‚РєРѕР№ РІС‚РѕСЂРѕР№ СЃРІРµСЂС…Сѓ РёР»Рё РєР°Рє РїРѕР·РІРѕР»СЏРµС‚ РїРѕР»РѕР¶РµРЅРёРµ РєР°СЂРµС‚РєРё РІ С‚РµРєСЃС‚Рµ
     view->curPosition.curLineNum = fmax((int)caret->absoluteVerticalPos - 1, 0);
     caret->verticalPos = (view->curPosition.curLineNum == 0) ? 0 : 1;
     if (view->curTextSize.totalLinesNum - view->curPosition.curLineNum < view->winH / view->charH) {
@@ -152,7 +152,7 @@ void ReturnTextToOldCaretPosition(CARET* caret, VIEW* view, SCROLLS* scrolls, HW
         caret->verticalPos = caret->absoluteVerticalPos - view->curPosition.curLineNum;
     }
 
-    //устанавливаем место в тексте с кареткой в центре окна или как позволяет положение каретки в тексте
+    //СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј РјРµСЃС‚Рѕ РІ С‚РµРєСЃС‚Рµ СЃ РєР°СЂРµС‚РєРѕР№ РІ С†РµРЅС‚СЂРµ РѕРєРЅР° РёР»Рё РєР°Рє РїРѕР·РІРѕР»СЏРµС‚ РїРѕР»РѕР¶РµРЅРёРµ РєР°СЂРµС‚РєРё РІ С‚РµРєСЃС‚Рµ
     view->curPosition.curCharNum = fmax((int)caret->absoluteHorizontalPos - (int)view->winW / ((int)view->charW * 2), 0);
     caret->horizontalPos = caret->absoluteHorizontalPos - view->curPosition.curCharNum;
     if (view->curTextSize.totalCharsNum - view->curPosition.curCharNum < view->winW / view->charW) {
@@ -160,7 +160,7 @@ void ReturnTextToOldCaretPosition(CARET* caret, VIEW* view, SCROLLS* scrolls, HW
         caret->horizontalPos = caret->absoluteHorizontalPos - view->curPosition.curCharNum;
     }
 
-    //поправляем положение скроллов
+    //РїРѕРїСЂР°РІР»СЏРµРј РїРѕР»РѕР¶РµРЅРёРµ СЃРєСЂРѕР»Р»РѕРІ
     scrolls->horizontal.pos = scrolls->horizontal.coeff * view->curPosition.curCharNum;
     SetScrollPos(hwnd, SB_HORZ, scrolls->horizontal.pos, TRUE);
     scrolls->vertical.pos = scrolls->vertical.coeff * view->curPosition.curLineNum;
@@ -169,19 +169,19 @@ void ReturnTextToOldCaretPosition(CARET* caret, VIEW* view, SCROLLS* scrolls, HW
 }
 
 /** \brief
- *  Функция, перемещающая каретку на одну позицию вправо
- * \param CARET* caret - структура каретки
- * \param TEXT* text - структура текста
- * \param VIEW* view - структура отображения текста
- * \param SCROLLS* scrolls - структура скроллов
- * \param HWND hwnd - дескриптор окна
+ *  Р¤СѓРЅРєС†РёСЏ, РїРµСЂРµРјРµС‰Р°СЋС‰Р°СЏ РєР°СЂРµС‚РєСѓ РЅР° РѕРґРЅСѓ РїРѕР·РёС†РёСЋ РІРїСЂР°РІРѕ
+ * \param CARET* caret - СЃС‚СЂСѓРєС‚СѓСЂР° РєР°СЂРµС‚РєРё
+ * \param TEXT* text - СЃС‚СЂСѓРєС‚СѓСЂР° С‚РµРєСЃС‚Р°
+ * \param VIEW* view - СЃС‚СЂСѓРєС‚СѓСЂР° РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ С‚РµРєСЃС‚Р°
+ * \param SCROLLS* scrolls - СЃС‚СЂСѓРєС‚СѓСЂР° СЃРєСЂРѕР»Р»РѕРІ
+ * \param HWND hwnd - РґРµСЃРєСЂРёРїС‚РѕСЂ РѕРєРЅР°
  *
  */
 void CaretRight(CARET* caret, TEXT* text, VIEW* view, SCROLLS* scrolls, HWND hwnd) {
-    //если каретка за пределами видимости, возвращаемся к ее предыдущему положению
+    //РµСЃР»Рё РєР°СЂРµС‚РєР° Р·Р° РїСЂРµРґРµР»Р°РјРё РІРёРґРёРјРѕСЃС‚Рё, РІРѕР·РІСЂР°С‰Р°РµРјСЃСЏ Рє РµРµ РїСЂРµРґС‹РґСѓС‰РµРјСѓ РїРѕР»РѕР¶РµРЅРёСЋ
     ReturnTextToOldCaretPosition(caret, view, scrolls, hwnd);
 
-    //перескакиваем в начало следующей строки, если текущая закончилась
+    //РїРµСЂРµСЃРєР°РєРёРІР°РµРј РІ РЅР°С‡Р°Р»Рѕ СЃР»РµРґСѓСЋС‰РµР№ СЃС‚СЂРѕРєРё, РµСЃР»Рё С‚РµРєСѓС‰Р°СЏ Р·Р°РєРѕРЅС‡РёР»Р°СЃСЊ
     if ((view->mode == USUAL
        && caret->absoluteHorizontalPos >= text->linesPositions[caret->absoluteVerticalPos + 1] - text->linesPositions[caret->absoluteVerticalPos] - 2) ||
         (view->mode == WITH_LAYOUT
@@ -225,19 +225,19 @@ void CaretRight(CARET* caret, TEXT* text, VIEW* view, SCROLLS* scrolls, HWND hwn
 }
 
 /** \brief
- *  Функция, перемещающая каретку на одну позицию влево
- * \param CARET* caret - структура каретки
- * \param TEXT* text - структура текста
- * \param VIEW* view - структура отображения текста
- * \param SCROLLS* scrolls - структура скроллов
- * \param HWND hwnd - дескриптор окна
+ *  Р¤СѓРЅРєС†РёСЏ, РїРµСЂРµРјРµС‰Р°СЋС‰Р°СЏ РєР°СЂРµС‚РєСѓ РЅР° РѕРґРЅСѓ РїРѕР·РёС†РёСЋ РІР»РµРІРѕ
+ * \param CARET* caret - СЃС‚СЂСѓРєС‚СѓСЂР° РєР°СЂРµС‚РєРё
+ * \param TEXT* text - СЃС‚СЂСѓРєС‚СѓСЂР° С‚РµРєСЃС‚Р°
+ * \param VIEW* view - СЃС‚СЂСѓРєС‚СѓСЂР° РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ С‚РµРєСЃС‚Р°
+ * \param SCROLLS* scrolls - СЃС‚СЂСѓРєС‚СѓСЂР° СЃРєСЂРѕР»Р»РѕРІ
+ * \param HWND hwnd - РґРµСЃРєСЂРёРїС‚РѕСЂ РѕРєРЅР°
  *
  */
 void CaretLeft(CARET* caret, TEXT* text, VIEW* view, SCROLLS* scrolls, HWND hwnd) {
-    //если каретка за пределами видимости, возвращаемся к ее предыдущему положению
+    //РµСЃР»Рё РєР°СЂРµС‚РєР° Р·Р° РїСЂРµРґРµР»Р°РјРё РІРёРґРёРјРѕСЃС‚Рё, РІРѕР·РІСЂР°С‰Р°РµРјСЃСЏ Рє РµРµ РїСЂРµРґС‹РґСѓС‰РµРјСѓ РїРѕР»РѕР¶РµРЅРёСЋ
     ReturnTextToOldCaretPosition(caret, view, scrolls, hwnd);
 
-    //перескакиваем в конец предыдущей строки, если были на нулевой позиции
+    //РїРµСЂРµСЃРєР°РєРёРІР°РµРј РІ РєРѕРЅРµС† РїСЂРµРґС‹РґСѓС‰РµР№ СЃС‚СЂРѕРєРё, РµСЃР»Рё Р±С‹Р»Рё РЅР° РЅСѓР»РµРІРѕР№ РїРѕР·РёС†РёРё
     if (caret->absoluteHorizontalPos <= 0) {
         if (caret->absoluteVerticalPos == 0)
             return;
@@ -283,19 +283,19 @@ void CaretLeft(CARET* caret, TEXT* text, VIEW* view, SCROLLS* scrolls, HWND hwnd
 }
 
 /** \brief
- *  Функция, определяющая положение каретки при переходе к режиму вывода с версткой
- * \param CARET* caret - структура каретки
- * \param TEXT* text - структура текста
- * \param VIEW* view - структура отображения текста
+ *  Р¤СѓРЅРєС†РёСЏ, РѕРїСЂРµРґРµР»СЏСЋС‰Р°СЏ РїРѕР»РѕР¶РµРЅРёРµ РєР°СЂРµС‚РєРё РїСЂРё РїРµСЂРµС…РѕРґРµ Рє СЂРµР¶РёРјСѓ РІС‹РІРѕРґР° СЃ РІРµСЂСЃС‚РєРѕР№
+ * \param CARET* caret - СЃС‚СЂСѓРєС‚СѓСЂР° РєР°СЂРµС‚РєРё
+ * \param TEXT* text - СЃС‚СЂСѓРєС‚СѓСЂР° С‚РµРєСЃС‚Р°
+ * \param VIEW* view - СЃС‚СЂСѓРєС‚СѓСЂР° РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ С‚РµРєСЃС‚Р°
  *
  */
 void FindCaretPositionForLayout(CARET* caret, TEXT* text, VIEW* view) {
     unsigned int i = 0;
 	unsigned int curAbsolutePosition = text->linesPositions[caret->absoluteVerticalPos] + caret->absoluteHorizontalPos;
-	                 //номер буквы, перед которой находится каретка, в общем массиве текста
+	                 //РЅРѕРјРµСЂ Р±СѓРєРІС‹, РїРµСЂРµРґ РєРѕС‚РѕСЂРѕР№ РЅР°С…РѕРґРёС‚СЃСЏ РєР°СЂРµС‚РєР°, РІ РѕР±С‰РµРј РјР°СЃСЃРёРІРµ С‚РµРєСЃС‚Р°
 
     for (i = 0; i < view->curTextSize.totalLinesNum * 2 - 1; i += 2) {
-        //ищем в какую строчку попадает каретка
+        //РёС‰РµРј РІ РєР°РєСѓСЋ СЃС‚СЂРѕС‡РєСѓ РїРѕРїР°РґР°РµС‚ РєР°СЂРµС‚РєР°
         if (curAbsolutePosition >= view->strPositionsWithLayout[(int)fmax(i - 1, 0)] &&
                        curAbsolutePosition <= view->strPositionsWithLayout[i + 1]) {
             caret->absoluteVerticalPos = i / 2;
@@ -308,19 +308,19 @@ void FindCaretPositionForLayout(CARET* caret, TEXT* text, VIEW* view) {
 }
 
 /** \brief
- *  Функция, определяющая пооложение каретки при переходе к режиму вывода без верстки
- * \param CARET* caret - структура каретки
- * \param TEXT* text - структура текста
- * \param VIEW* view - структура отображения текста
+ *  Р¤СѓРЅРєС†РёСЏ, РѕРїСЂРµРґРµР»СЏСЋС‰Р°СЏ РїРѕРѕР»РѕР¶РµРЅРёРµ РєР°СЂРµС‚РєРё РїСЂРё РїРµСЂРµС…РѕРґРµ Рє СЂРµР¶РёРјСѓ РІС‹РІРѕРґР° Р±РµР· РІРµСЂСЃС‚РєРё
+ * \param CARET* caret - СЃС‚СЂСѓРєС‚СѓСЂР° РєР°СЂРµС‚РєРё
+ * \param TEXT* text - СЃС‚СЂСѓРєС‚СѓСЂР° С‚РµРєСЃС‚Р°
+ * \param VIEW* view - СЃС‚СЂСѓРєС‚СѓСЂР° РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ С‚РµРєСЃС‚Р°
  *
  */
 void FindCaretPositionForUsual(CARET* caret, TEXT* text, VIEW* view) {
     unsigned int i = 0;
     unsigned int curAbsolutePosition = view->strPositionsWithLayout[caret->absoluteVerticalPos * 2] + caret->absoluteHorizontalPos;
-                     //номер буквы, перед которой находится каретка, в общем массиве текста
+                     //РЅРѕРјРµСЂ Р±СѓРєРІС‹, РїРµСЂРµРґ РєРѕС‚РѕСЂРѕР№ РЅР°С…РѕРґРёС‚СЃСЏ РєР°СЂРµС‚РєР°, РІ РѕР±С‰РµРј РјР°СЃСЃРёРІРµ С‚РµРєСЃС‚Р°
 
     for (i = 0; i < text->linesNum; i++) {
-        //ищем в какую строчку попадает каретка
+        //РёС‰РµРј РІ РєР°РєСѓСЋ СЃС‚СЂРѕС‡РєСѓ РїРѕРїР°РґР°РµС‚ РєР°СЂРµС‚РєР°
         if (curAbsolutePosition >= text->linesPositions[i] &&
                        curAbsolutePosition < text->linesPositions[i + 1]) {
             caret->absoluteVerticalPos = i;

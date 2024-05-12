@@ -10,7 +10,7 @@
 #include "text_processing.h"
 #include "caret.h"
 
-#define HORZ_OFFSET_MULT 0.5 //отношение ширины символа и размера горизонтального отступа
+#define HORZ_OFFSET_MULT 0.5 //РѕС‚РЅРѕС€РµРЅРёРµ С€РёСЂРёРЅС‹ СЃРёРјРІРѕР»Р° Рё СЂР°Р·РјРµСЂР° РіРѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅРѕРіРѕ РѕС‚СЃС‚СѓРїР°
 
 void PrintText(HDC hdc, TEXT* text, VIEW* view);
 

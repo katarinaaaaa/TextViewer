@@ -1,10 +1,10 @@
 #include "scroll.h"
 
 /** \brief
- *  Ôóíêöèÿ, èíèöèàëèçèðóþùàÿ ñêðîëëû
- * \param HWND hwnd - äåñêðèïòîð îêíà
- * \param SCROLLS* scrolls - ñòðóêòóðà ñêðîëëîâ
- * \param VIEW* view - ñòðóêòóðà îòîáðàæåíèÿ òåêñòà
+ *  Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ, Ð¸Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð¸Ñ€ÑƒÑŽÑ‰Ð°Ñ ÑÐºÑ€Ð¾Ð»Ð»Ñ‹
+ * \param HWND hwnd - Ð´ÐµÑÐºÑ€Ð¸Ð¿Ñ‚Ð¾Ñ€ Ð¾ÐºÐ½Ð°
+ * \param SCROLLS* scrolls - ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð° ÑÐºÑ€Ð¾Ð»Ð»Ð¾Ð²
+ * \param VIEW* view - ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð° Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ñ Ñ‚ÐµÐºÑÑ‚Ð°
  *
  */
 void InitializeScrolls(HWND hwnd, SCROLLS *scrolls) {
@@ -17,10 +17,10 @@ void InitializeScrolls(HWND hwnd, SCROLLS *scrolls) {
 }
 
 /** \brief
- *  Ôóíêöèÿ, îáíîâëÿþùàÿ ïàðàìåòðû ñêðîëëà
- * \param HWND hwnd - äåñêðèïòîð îêíà
- * \param VIEW* view - ñòðóêòóðà îòîáðàæåíèÿ òåêñòà
- * \param SCROLLS* scrolls - ñòðóêòóðà ñêðîëëîâ
+ *  Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ, Ð¾Ð±Ð½Ð¾Ð²Ð»ÑÑŽÑ‰Ð°Ñ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ñ‹ ÑÐºÑ€Ð¾Ð»Ð»Ð°
+ * \param HWND hwnd - Ð´ÐµÑÐºÑ€Ð¸Ð¿Ñ‚Ð¾Ñ€ Ð¾ÐºÐ½Ð°
+ * \param VIEW* view - ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð° Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ñ Ñ‚ÐµÐºÑÑ‚Ð°
+ * \param SCROLLS* scrolls - ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð° ÑÐºÑ€Ð¾Ð»Ð»Ð¾Ð²
  *
  */
 void ResetScrollsPosition(HWND hwnd, VIEW* view, SCROLLS* scrolls) {
@@ -28,7 +28,7 @@ void ResetScrollsPosition(HWND hwnd, VIEW* view, SCROLLS* scrolls) {
     unsigned int charInLineNumOnScreen = view->winW / view->charW;
     int rangeMax = 0;
 
-    //âåðòèêàëüíûé ñêðîëë
+    //Ð²ÐµÑ€Ñ‚Ð¸ÐºÐ°Ð»ÑŒÐ½Ñ‹Ð¹ ÑÐºÑ€Ð¾Ð»Ð»
     if (view->curTextSize.totalLinesNum <= linesNumOnScreen) {
          EnableScrollBar(hwnd, SB_VERT, ESB_DISABLE_BOTH);
          scrolls->vertical.isActive = FALSE;
@@ -48,9 +48,9 @@ void ResetScrollsPosition(HWND hwnd, VIEW* view, SCROLLS* scrolls) {
 
     }
 
-    //ãîðèçîíòàëüíûé ñêðîëë
+    //Ð³Ð¾Ñ€Ð¸Ð·Ð¾Ð½Ñ‚Ð°Ð»ÑŒÐ½Ñ‹Ð¹ ÑÐºÑ€Ð¾Ð»Ð»
     if (view->mode == WITH_LAYOUT && view->curPosition.curCharNum != 0) {
-                        //äàåì âîçìîæíîñòü äîâåñòè ñêðîëë äî ëåâîãî êðàÿ â ðåæèìå ñ âåðñòêîé
+                        //Ð´Ð°ÐµÐ¼ Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ÑÑ‚ÑŒ Ð´Ð¾Ð²ÐµÑÑ‚Ð¸ ÑÐºÑ€Ð¾Ð»Ð» Ð´Ð¾ Ð»ÐµÐ²Ð¾Ð³Ð¾ ÐºÑ€Ð°Ñ Ð² Ñ€ÐµÐ¶Ð¸Ð¼Ðµ Ñ Ð²ÐµÑ€ÑÑ‚ÐºÐ¾Ð¹
         EnableScrollBar(hwnd, SB_HORZ, ESB_ENABLE_BOTH);
         EnableScrollBar(hwnd, SB_HORZ, ESB_DISABLE_RIGHT);
         rangeMax = view->curTextSize.totalCharsNum;
@@ -75,9 +75,9 @@ void ResetScrollsPosition(HWND hwnd, VIEW* view, SCROLLS* scrolls) {
 }
 
 /** \brief
- *  Ôóíêöèÿ, ðåàëèçóþùàÿ ñêðîëë ââåðõ íà ñòðî÷êó
- * \param VIEW* view - ñòðóêòóðà îòîáðàæåíèÿ òåêñòà
- * \param SCROLLS* scrolls - ñòðóêòóðà ñêðîëëîâ
+ *  Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ, Ñ€ÐµÐ°Ð»Ð¸Ð·ÑƒÑŽÑ‰Ð°Ñ ÑÐºÑ€Ð¾Ð»Ð» Ð²Ð²ÐµÑ€Ñ… Ð½Ð° ÑÑ‚Ñ€Ð¾Ñ‡ÐºÑƒ
+ * \param VIEW* view - ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð° Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ñ Ñ‚ÐµÐºÑÑ‚Ð°
+ * \param SCROLLS* scrolls - ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð° ÑÐºÑ€Ð¾Ð»Ð»Ð¾Ð²
  *
  */
 void ScrollLineUp(VIEW* view, SCROLLS* scrolls) {
@@ -88,9 +88,9 @@ void ScrollLineUp(VIEW* view, SCROLLS* scrolls) {
 }
 
 /** \brief
- *  Ôóíêöèÿ, ðåàëèçóþùàÿ ñêðîëë âíèç íà ñòðî÷êó
- * \param VIEW* view - ñòðóêòóðà îòîáðàæåíèÿ òåêñòà
- * \param SCROLLS* scrolls - ñòðóêòóðà ñêðîëëîâ
+ *  Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ, Ñ€ÐµÐ°Ð»Ð¸Ð·ÑƒÑŽÑ‰Ð°Ñ ÑÐºÑ€Ð¾Ð»Ð» Ð²Ð½Ð¸Ð· Ð½Ð° ÑÑ‚Ñ€Ð¾Ñ‡ÐºÑƒ
+ * \param VIEW* view - ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð° Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ñ Ñ‚ÐµÐºÑÑ‚Ð°
+ * \param SCROLLS* scrolls - ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð° ÑÐºÑ€Ð¾Ð»Ð»Ð¾Ð²
  *
  */
 void ScrollLineDown(VIEW* view, SCROLLS* scrolls) {
@@ -103,9 +103,9 @@ void ScrollLineDown(VIEW* view, SCROLLS* scrolls) {
 }
 
 /** \brief
- *  Ôóíêöèÿ, ðåàëèçóþùàÿ ñêðîëë ââåðõ íà ñòðàíèöó
- * \param VIEW* view - ñòðóêòóðà îòîáðàæåíèÿ òåêñòà
- * \param SCROLLS* scrolls - ñòðóêòóðà ñêðîëëîâ
+ *  Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ, Ñ€ÐµÐ°Ð»Ð¸Ð·ÑƒÑŽÑ‰Ð°Ñ ÑÐºÑ€Ð¾Ð»Ð» Ð²Ð²ÐµÑ€Ñ… Ð½Ð° ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ
+ * \param VIEW* view - ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð° Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ñ Ñ‚ÐµÐºÑÑ‚Ð°
+ * \param SCROLLS* scrolls - ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð° ÑÐºÑ€Ð¾Ð»Ð»Ð¾Ð²
  *
  */
 void ScrollPageUp(VIEW* view, SCROLLS* scrolls) {
@@ -124,9 +124,9 @@ void ScrollPageUp(VIEW* view, SCROLLS* scrolls) {
 }
 
 /** \brief
- *  Ôóíêöèÿ, ðåàëèçóþùàÿ ñêðîëë âíèç íà ñòðàíèöó
- * \param VIEW* view - ñòðóêòóðà îòîáðàæåíèÿ òåêñòà
- * \param SCROLLS* scrolls - ñòðóêòóðà ñêðîëëîâ
+ *  Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ, Ñ€ÐµÐ°Ð»Ð¸Ð·ÑƒÑŽÑ‰Ð°Ñ ÑÐºÑ€Ð¾Ð»Ð» Ð²Ð½Ð¸Ð· Ð½Ð° ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ
+ * \param VIEW* view - ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð° Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ñ Ñ‚ÐµÐºÑÑ‚Ð°
+ * \param SCROLLS* scrolls - ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð° ÑÐºÑ€Ð¾Ð»Ð»Ð¾Ð²
  *
  */
 void ScrollPageDown(VIEW* view, SCROLLS* scrolls) {
@@ -145,9 +145,9 @@ void ScrollPageDown(VIEW* view, SCROLLS* scrolls) {
 }
 
 /** \brief
- *  Ôóíêöèÿ, ðåàëèçóþùàÿ ñêðîëë ê âåðõó òåêñòà
- * \param VIEW* view - ñòðóêòóðà îòîáðàæåíèÿ òåêñòà
- * \param SCROLLS* scrolls - ñòðóêòóðà ñêðîëëîâ
+ *  Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ, Ñ€ÐµÐ°Ð»Ð¸Ð·ÑƒÑŽÑ‰Ð°Ñ ÑÐºÑ€Ð¾Ð»Ð» Ðº Ð²ÐµÑ€Ñ…Ñƒ Ñ‚ÐµÐºÑÑ‚Ð°
+ * \param VIEW* view - ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð° Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ñ Ñ‚ÐµÐºÑÑ‚Ð°
+ * \param SCROLLS* scrolls - ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð° ÑÐºÑ€Ð¾Ð»Ð»Ð¾Ð²
  *
  */
 void ScrollToTop(VIEW* view, SCROLLS* scrolls) {
@@ -159,9 +159,9 @@ void ScrollToTop(VIEW* view, SCROLLS* scrolls) {
 }
 
 /** \brief
- *  Ôóíêöèÿ, ðåàëèçóþùàÿ ñêðîëë ê íèçó òåêñòà
- * \param VIEW* view - ñòðóêòóðà îòîáðàæåíèÿ òåêñòà
- * \param SCROLLS* scrolls - ñòðóêòóðà ñêðîëëîâ
+ *  Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ, Ñ€ÐµÐ°Ð»Ð¸Ð·ÑƒÑŽÑ‰Ð°Ñ ÑÐºÑ€Ð¾Ð»Ð» Ðº Ð½Ð¸Ð·Ñƒ Ñ‚ÐµÐºÑÑ‚Ð°
+ * \param VIEW* view - ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð° Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ñ Ñ‚ÐµÐºÑÑ‚Ð°
+ * \param SCROLLS* scrolls - ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð° ÑÐºÑ€Ð¾Ð»Ð»Ð¾Ð²
  *
  */
 void ScrollToBottom(VIEW* view, SCROLLS* scrolls) {
@@ -173,10 +173,10 @@ void ScrollToBottom(VIEW* view, SCROLLS* scrolls) {
 }
 
 /** \brief
- *  Ôóíêöèÿ, ðåàëèçóþùàÿ ïåðåìåùåíèå âåðòèêàëüíîãî ñêðîëëà
- * \param VIEW* view - ñòðóêòóðà îòîáðàæåíèÿ òåêñòà
- * \param SCROLLS* scrolls - ñòðóêòóðà ñêðîëëîâ
- * \param int newPos - íîâàÿ ïîçèöèÿ ñêðîëëà
+ *  Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ, Ñ€ÐµÐ°Ð»Ð¸Ð·ÑƒÑŽÑ‰Ð°Ñ Ð¿ÐµÑ€ÐµÐ¼ÐµÑ‰ÐµÐ½Ð¸Ðµ Ð²ÐµÑ€Ñ‚Ð¸ÐºÐ°Ð»ÑŒÐ½Ð¾Ð³Ð¾ ÑÐºÑ€Ð¾Ð»Ð»Ð°
+ * \param VIEW* view - ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð° Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ñ Ñ‚ÐµÐºÑÑ‚Ð°
+ * \param SCROLLS* scrolls - ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð° ÑÐºÑ€Ð¾Ð»Ð»Ð¾Ð²
+ * \param int newPos - Ð½Ð¾Ð²Ð°Ñ Ð¿Ð¾Ð·Ð¸Ñ†Ð¸Ñ ÑÐºÑ€Ð¾Ð»Ð»Ð°
  *
  */
 void ScrollThumbVertical(VIEW* view, SCROLLS* scrolls, int newPos) {
@@ -186,9 +186,9 @@ void ScrollThumbVertical(VIEW* view, SCROLLS* scrolls, int newPos) {
 
 
 /** \brief
- *  Ôóíêöèÿ, ðåàëèçóþùàÿ ñêðîëë âëåâî íà ñèìâîë
- * \param VIEW* view - ñòðóêòóðà îòîáðàæåíèÿ òåêñòà
- * \param SCROLLS* scrolls - ñòðóêòóðà ñêðîëëîâ
+ *  Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ, Ñ€ÐµÐ°Ð»Ð¸Ð·ÑƒÑŽÑ‰Ð°Ñ ÑÐºÑ€Ð¾Ð»Ð» Ð²Ð»ÐµÐ²Ð¾ Ð½Ð° ÑÐ¸Ð¼Ð²Ð¾Ð»
+ * \param VIEW* view - ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð° Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ñ Ñ‚ÐµÐºÑÑ‚Ð°
+ * \param SCROLLS* scrolls - ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð° ÑÐºÑ€Ð¾Ð»Ð»Ð¾Ð²
  *
  */
 void ScrollLineLeft(VIEW* view, SCROLLS* scrolls) {
@@ -199,9 +199,9 @@ void ScrollLineLeft(VIEW* view, SCROLLS* scrolls) {
 }
 
 /** \brief
- *  Ôóíêöèÿ, ðåàëèçóþùàÿ ñêðîëë âïðàâî íà ñèìâîë
- * \param VIEW* view - ñòðóêòóðà îòîáðàæåíèÿ òåêñòà
- * \param SCROLLS* scrolls - ñòðóêòóðà ñêðîëëîâ
+ *  Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ, Ñ€ÐµÐ°Ð»Ð¸Ð·ÑƒÑŽÑ‰Ð°Ñ ÑÐºÑ€Ð¾Ð»Ð» Ð²Ð¿Ñ€Ð°Ð²Ð¾ Ð½Ð° ÑÐ¸Ð¼Ð²Ð¾Ð»
+ * \param VIEW* view - ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð° Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ñ Ñ‚ÐµÐºÑÑ‚Ð°
+ * \param SCROLLS* scrolls - ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð° ÑÐºÑ€Ð¾Ð»Ð»Ð¾Ð²
  *
  */
 void ScrollLineRight(VIEW* view, SCROLLS* scrolls) {
@@ -212,9 +212,9 @@ void ScrollLineRight(VIEW* view, SCROLLS* scrolls) {
 }
 
 /** \brief
- *  Ôóíêöèÿ, ðåàëèçóþùàÿ ñêðîëë âëåâî íà ñòðàíèöó
- * \param VIEW* view - ñòðóêòóðà îòîáðàæåíèÿ òåêñòà
- * \param SCROLLS* scrolls - ñòðóêòóðà ñêðîëëîâ
+ *  Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ, Ñ€ÐµÐ°Ð»Ð¸Ð·ÑƒÑŽÑ‰Ð°Ñ ÑÐºÑ€Ð¾Ð»Ð» Ð²Ð»ÐµÐ²Ð¾ Ð½Ð° ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ
+ * \param VIEW* view - ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð° Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ñ Ñ‚ÐµÐºÑÑ‚Ð°
+ * \param SCROLLS* scrolls - ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð° ÑÐºÑ€Ð¾Ð»Ð»Ð¾Ð²
  *
  */
 void ScrollPageLeft(VIEW* view, SCROLLS* scrolls) {
@@ -233,9 +233,9 @@ void ScrollPageLeft(VIEW* view, SCROLLS* scrolls) {
 }
 
 /** \brief
- *  Ôóíêöèÿ, ðåàëèçóþùàÿ ñêðîëë âïðàâî íà ñòðàíèöó
- * \param VIEW* view - ñòðóêòóðà îòîáðàæåíèÿ òåêñòà
- * \param SCROLLS* scrolls - ñòðóêòóðà ñêðîëëîâ
+ *  Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ, Ñ€ÐµÐ°Ð»Ð¸Ð·ÑƒÑŽÑ‰Ð°Ñ ÑÐºÑ€Ð¾Ð»Ð» Ð²Ð¿Ñ€Ð°Ð²Ð¾ Ð½Ð° ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ
+ * \param VIEW* view - ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð° Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ñ Ñ‚ÐµÐºÑÑ‚Ð°
+ * \param SCROLLS* scrolls - ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð° ÑÐºÑ€Ð¾Ð»Ð»Ð¾Ð²
  *
  */
 void ScrollPageRight(VIEW* view, SCROLLS* scrolls) {
@@ -254,9 +254,9 @@ void ScrollPageRight(VIEW* view, SCROLLS* scrolls) {
 }
 
 /** \brief
- *  Ôóíêöèÿ, ðåàëèçóþùàÿ ñêðîëë ê ëåâîìó êðàþ òåêñòà
- * \param VIEW* view - ñòðóêòóðà îòîáðàæåíèÿ òåêñòà
- * \param SCROLLS* scrolls - ñòðóêòóðà ñêðîëëîâ
+ *  Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ, Ñ€ÐµÐ°Ð»Ð¸Ð·ÑƒÑŽÑ‰Ð°Ñ ÑÐºÑ€Ð¾Ð»Ð» Ðº Ð»ÐµÐ²Ð¾Ð¼Ñƒ ÐºÑ€Ð°ÑŽ Ñ‚ÐµÐºÑÑ‚Ð°
+ * \param VIEW* view - ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð° Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ñ Ñ‚ÐµÐºÑÑ‚Ð°
+ * \param SCROLLS* scrolls - ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð° ÑÐºÑ€Ð¾Ð»Ð»Ð¾Ð²
  *
  */
 void ScrollToLeftEdge(VIEW* view, SCROLLS* scrolls) {
@@ -268,9 +268,9 @@ void ScrollToLeftEdge(VIEW* view, SCROLLS* scrolls) {
 }
 
 /** \brief
- *  Ôóíêöèÿ, ðåàëèçóþùàÿ ñêðîëë ê ïðàâîìó êðàþ òåêñòà
- * \param VIEW* view - ñòðóêòóðà îòîáðàæåíèÿ òåêñòà
- * \param SCROLLS* scrolls - ñòðóêòóðà ñêðîëëîâ
+ *  Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ, Ñ€ÐµÐ°Ð»Ð¸Ð·ÑƒÑŽÑ‰Ð°Ñ ÑÐºÑ€Ð¾Ð»Ð» Ðº Ð¿Ñ€Ð°Ð²Ð¾Ð¼Ñƒ ÐºÑ€Ð°ÑŽ Ñ‚ÐµÐºÑÑ‚Ð°
+ * \param VIEW* view - ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð° Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ñ Ñ‚ÐµÐºÑÑ‚Ð°
+ * \param SCROLLS* scrolls - ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð° ÑÐºÑ€Ð¾Ð»Ð»Ð¾Ð²
  *
  */
 void ScrollToRightEdge(VIEW* view, SCROLLS* scrolls) {
@@ -282,14 +282,14 @@ void ScrollToRightEdge(VIEW* view, SCROLLS* scrolls) {
 }
 
 /** \brief
- *  Ôóíêöèÿ, ðåàëèçóþùàÿ ïåðåìåùåíèå ãîðèçîíòàëüíîãî ñêðîëëà
- * \param VIEW* view - ñòðóêòóðà îòîáðàæåíèÿ òåêñòà
- * \param SCROLLS* scrolls - ñòðóêòóðà ñêðîëëîâ
- * \param int newPos - íîâàÿ ïîçèöèÿ ñêðîëëà
+ *  Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ, Ñ€ÐµÐ°Ð»Ð¸Ð·ÑƒÑŽÑ‰Ð°Ñ Ð¿ÐµÑ€ÐµÐ¼ÐµÑ‰ÐµÐ½Ð¸Ðµ Ð³Ð¾Ñ€Ð¸Ð·Ð¾Ð½Ñ‚Ð°Ð»ÑŒÐ½Ð¾Ð³Ð¾ ÑÐºÑ€Ð¾Ð»Ð»Ð°
+ * \param VIEW* view - ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð° Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ñ Ñ‚ÐµÐºÑÑ‚Ð°
+ * \param SCROLLS* scrolls - ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð° ÑÐºÑ€Ð¾Ð»Ð»Ð¾Ð²
+ * \param int newPos - Ð½Ð¾Ð²Ð°Ñ Ð¿Ð¾Ð·Ð¸Ñ†Ð¸Ñ ÑÐºÑ€Ð¾Ð»Ð»Ð°
  *
  */
 void ScrollThumbHorizontal(VIEW* view, SCROLLS* scrolls, int newPos) {
-    //áëîêèðóåì äâèæåíèå âïðàâî â ðåæèìå ñ âåðñòêîé
+    //Ð±Ð»Ð¾ÐºÐ¸Ñ€ÑƒÐµÐ¼ Ð´Ð²Ð¸Ð¶ÐµÐ½Ð¸Ðµ Ð²Ð¿Ñ€Ð°Ð²Ð¾ Ð² Ñ€ÐµÐ¶Ð¸Ð¼Ðµ Ñ Ð²ÐµÑ€ÑÑ‚ÐºÐ¾Ð¹
     if (view->mode == WITH_LAYOUT && newPos >= scrolls->horizontal.pos)
         return;
 

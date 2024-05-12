@@ -10,7 +10,7 @@
 #include "scroll.h"
 #include "caret.h"
 
-#define FONT_SIZE 30 //размер шрифта
+#define FONT_SIZE 30 //СЂР°Р·РјРµСЂ С€СЂРёС„С‚Р°
 
 /*  Declare Windows procedure  */
 LRESULT CALLBACK WindowProcedure (HWND, UINT, WPARAM, LPARAM);
@@ -30,7 +30,7 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
     wincl.hInstance = hThisInstance; /* This is the handle for our programm */
     wincl.lpszClassName = szClassName;
     wincl.lpfnWndProc = WindowProcedure;      /* This function is called by windows */
-    wincl.style = CS_DBLCLKS | CS_OWNDC | CS_HREDRAW | CS_VREDRAW;      /* Catch double-clicks | сохранять контекст устройства */
+    wincl.style = CS_DBLCLKS | CS_OWNDC | CS_HREDRAW | CS_VREDRAW;      /* Catch double-clicks | СЃРѕС…СЂР°РЅСЏС‚СЊ РєРѕРЅС‚РµРєСЃС‚ СѓСЃС‚СЂРѕР№СЃС‚РІР° */
     wincl.cbSize = sizeof (WNDCLASSEX);
 
     /* Use default icon and mouse-pointer */
@@ -42,7 +42,7 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
     wincl.cbClsExtra = 0;                      /* No extra bytes after the window class */
     wincl.cbWndExtra = 0;                      /* structure or the window instance */
 
-    wincl.hbrBackground = (HBRUSH) GetStockObject(WHITE_BRUSH); //белый цвет фона окна
+    wincl.hbrBackground = (HBRUSH) GetStockObject(WHITE_BRUSH); //Р±РµР»С‹Р№ С†РІРµС‚ С„РѕРЅР° РѕРєРЅР°
 
     /* Register the window class, and if it fails quit the program */
     if (!RegisterClassEx (&wincl))
@@ -80,9 +80,9 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
 }
 
 /** \brief
- *  Функция, меняющая шрифт на моноширинный и сохраняющая его размеры
- * \param HWND hwnd - дескриптор окна
- * \param VIEW* view - структура отображения текста
+ *  Р¤СѓРЅРєС†РёСЏ, РјРµРЅСЏСЋС‰Р°СЏ С€СЂРёС„С‚ РЅР° РјРѕРЅРѕС€РёСЂРёРЅРЅС‹Р№ Рё СЃРѕС…СЂР°РЅСЏСЋС‰Р°СЏ РµРіРѕ СЂР°Р·РјРµСЂС‹
+ * \param HWND hwnd - РґРµСЃРєСЂРёРїС‚РѕСЂ РѕРєРЅР°
+ * \param VIEW* view - СЃС‚СЂСѓРєС‚СѓСЂР° РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ С‚РµРєСЃС‚Р°
  *
  */
 void ChangeFont(HFONT* font, HWND hwnd, VIEW* view) {
@@ -99,9 +99,9 @@ void ChangeFont(HFONT* font, HWND hwnd, VIEW* view) {
 }
 
 /** \brief
- *  Функция, инициализирующая окно выбора файла
- * \param HWND hwnd - дескриптор окна
- * \param PTCHAR name - имя файла
+ *  Р¤СѓРЅРєС†РёСЏ, РёРЅРёС†РёР°Р»РёР·РёСЂСѓСЋС‰Р°СЏ РѕРєРЅРѕ РІС‹Р±РѕСЂР° С„Р°Р№Р»Р°
+ * \param HWND hwnd - РґРµСЃРєСЂРёРїС‚РѕСЂ РѕРєРЅР°
+ * \param PTCHAR name - РёРјСЏ С„Р°Р№Р»Р°
  *
  */
 BOOL PopUpFileInitialize(HWND hwnd, PTCHAR name) {
@@ -110,29 +110,29 @@ BOOL PopUpFileInitialize(HWND hwnd, PTCHAR name) {
     ZeroMemory(&ofn, sizeof(ofn));
     ZeroMemory(name, sizeof(TCHAR) * MAX_PATH);
 
-    ofn.lStructSize = sizeof(ofn);                        //размер структуры
-    ofn.hwndOwner = hwnd;                                 //владелец окна диалога
-    ofn.lpstrFile = name;                                 //указатель на буфер для имени файла
-    ofn.nMaxFile = MAX_PATH;                              //размер буфера
-    ofn.lpstrFilter = "All Files\0*.TXT;*.C;*.H;*.CPP\0"; //фильтр отбора файлов
-    ofn.lpstrTitle = TEXT("Please, select the file");     //заголовок окна диалога
-    ofn.lpstrInitialDir = NULL;                           //директория при открытии
-    ofn.lpstrCustomFilter = NULL;                         //буфер для определения шаблона
-    ofn.nMaxCustFilter = 0;                               //размер буфера
-    ofn.nFilterIndex = 0;                                 //текущий фильтр для выбора типа файлов
-    ofn.lpstrFileTitle = NULL;                            //буфер для краткого имени файла
-    ofn.nMaxFileTitle = 0;                                //размер буфера
-    ofn.nFileOffset = 0;                                  //сдвиг от пути до краткого имени файла
-    ofn.nFileExtension = 0;                               //сдвиг от пути до расширения файла
-    ofn.lpstrDefExt = "txt";                              //расширение по умолчанию
-    ofn.lCustData = 0L;                                   //данные, передающиеся перехватывающей процедуре
-    ofn.lpfnHook = NULL;                                  //перехватывающая процедура
-    ofn.hInstance = NULL;                                 //модуль, в котором находится шаблон
-    ofn.lpTemplateName = NULL;                            //имя шаблона
+    ofn.lStructSize = sizeof(ofn);                        //СЂР°Р·РјРµСЂ СЃС‚СЂСѓРєС‚СѓСЂС‹
+    ofn.hwndOwner = hwnd;                                 //РІР»Р°РґРµР»РµС† РѕРєРЅР° РґРёР°Р»РѕРіР°
+    ofn.lpstrFile = name;                                 //СѓРєР°Р·Р°С‚РµР»СЊ РЅР° Р±СѓС„РµСЂ РґР»СЏ РёРјРµРЅРё С„Р°Р№Р»Р°
+    ofn.nMaxFile = MAX_PATH;                              //СЂР°Р·РјРµСЂ Р±СѓС„РµСЂР°
+    ofn.lpstrFilter = "All Files\0*.TXT;*.C;*.H;*.CPP\0"; //С„РёР»СЊС‚СЂ РѕС‚Р±РѕСЂР° С„Р°Р№Р»РѕРІ
+    ofn.lpstrTitle = TEXT("Please, select the file");     //Р·Р°РіРѕР»РѕРІРѕРє РѕРєРЅР° РґРёР°Р»РѕРіР°
+    ofn.lpstrInitialDir = NULL;                           //РґРёСЂРµРєС‚РѕСЂРёСЏ РїСЂРё РѕС‚РєСЂС‹С‚РёРё
+    ofn.lpstrCustomFilter = NULL;                         //Р±СѓС„РµСЂ РґР»СЏ РѕРїСЂРµРґРµР»РµРЅРёСЏ С€Р°Р±Р»РѕРЅР°
+    ofn.nMaxCustFilter = 0;                               //СЂР°Р·РјРµСЂ Р±СѓС„РµСЂР°
+    ofn.nFilterIndex = 0;                                 //С‚РµРєСѓС‰РёР№ С„РёР»СЊС‚СЂ РґР»СЏ РІС‹Р±РѕСЂР° С‚РёРїР° С„Р°Р№Р»РѕРІ
+    ofn.lpstrFileTitle = NULL;                            //Р±СѓС„РµСЂ РґР»СЏ РєСЂР°С‚РєРѕРіРѕ РёРјРµРЅРё С„Р°Р№Р»Р°
+    ofn.nMaxFileTitle = 0;                                //СЂР°Р·РјРµСЂ Р±СѓС„РµСЂР°
+    ofn.nFileOffset = 0;                                  //СЃРґРІРёРі РѕС‚ РїСѓС‚Рё РґРѕ РєСЂР°С‚РєРѕРіРѕ РёРјРµРЅРё С„Р°Р№Р»Р°
+    ofn.nFileExtension = 0;                               //СЃРґРІРёРі РѕС‚ РїСѓС‚Рё РґРѕ СЂР°СЃС€РёСЂРµРЅРёСЏ С„Р°Р№Р»Р°
+    ofn.lpstrDefExt = "txt";                              //СЂР°СЃС€РёСЂРµРЅРёРµ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
+    ofn.lCustData = 0L;                                   //РґР°РЅРЅС‹Рµ, РїРµСЂРµРґР°СЋС‰РёРµСЃСЏ РїРµСЂРµС…РІР°С‚С‹РІР°СЋС‰РµР№ РїСЂРѕС†РµРґСѓСЂРµ
+    ofn.lpfnHook = NULL;                                  //РїРµСЂРµС…РІР°С‚С‹РІР°СЋС‰Р°СЏ РїСЂРѕС†РµРґСѓСЂР°
+    ofn.hInstance = NULL;                                 //РјРѕРґСѓР»СЊ, РІ РєРѕС‚РѕСЂРѕРј РЅР°С…РѕРґРёС‚СЃСЏ С€Р°Р±Р»РѕРЅ
+    ofn.lpTemplateName = NULL;                            //РёРјСЏ С€Р°Р±Р»РѕРЅР°
     ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST | OFN_HIDEREADONLY;
-                                                          //параметры вида диалога
+                                                          //РїР°СЂР°РјРµС‚СЂС‹ РІРёРґР° РґРёР°Р»РѕРіР°
 
-    return GetOpenFileName(&ofn);                         //вызов диалога для выбора файла
+    return GetOpenFileName(&ofn);                         //РІС‹Р·РѕРІ РґРёР°Р»РѕРіР° РґР»СЏ РІС‹Р±РѕСЂР° С„Р°Р№Р»Р°
 }
 
 /*  This function is called by the Windows function DispatchMessage()  */
