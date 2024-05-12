@@ -1,0 +1,24 @@
+#include "mymenu.h"
+IDM_ICON ICON "sketch.ico"
+
+IDM_MENU MENU
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&Open", IDM_OPEN  /**< открыть файл для просмотра */
+        MENUITEM "E&xit", IDM_EXIT  /**< завершить работу программы */
+    END
+
+    POPUP "&Mode"
+    BEGIN
+        MENUITEM "&Usual",IDM_USUAL, CHECKED, GRAYED /**< режим без верстки */
+        MENUITEM "With &layout", IDM_WITH_LAYOUT  /**< режим с версткой */
+    END
+
+
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "H&elp",IDM_HELP /**< помощь */
+        MENUITEM "&About", IDM_ABOUT  /**< о программе */
+    END
+END
